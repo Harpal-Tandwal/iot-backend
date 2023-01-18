@@ -15,7 +15,7 @@ require('./db/conn'); // requiring database connection info
 const auth = require ('./router/auth');
 app.use(auth);
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
     console.log(req.body);
     res.send("your are using hptech iot services")
     
