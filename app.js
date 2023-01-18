@@ -16,8 +16,9 @@ const auth = require ('./router/auth');
 app.use(auth);
 
 app.get("*", (req, res) => {
+    res.send("your are using hptech iot services")
     
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  //  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     // res.sendFile("C:\Users\Dell\Desktop\project\mernProjectThapa\HpTech-iot-platform\client\public\index.html");
     
 })
