@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const path = require("path");
 dotenv.config({path:'./config.env'}); // accessing dotenv file 
-cosnt cors = require("cors")
+const cors = require("cors")
 
 const PORT = process.env.PORT ||5000; // accessing  credentials from env file
 
