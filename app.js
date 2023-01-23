@@ -11,7 +11,7 @@ const cors = require("cors")
 const PORT = process.env.PORT ||5000; // accessing  credentials from env file
 
 require('./db/conn'); // requiring database connection info
-app.use(cors({origin: "*"}))
+app.use(cors({origin: "https://hptech-v16r.onrender.com"}))
 
 const auth = require ('./router/auth');
 app.use(auth);
