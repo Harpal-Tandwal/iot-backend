@@ -12,15 +12,15 @@ const PORT = process.env.PORT ||5000; // accessing  credentials from env file
 
 require('./db/conn'); // requiring database connection info
 app.enable('trust proxy');
-app.use(
-  cors({
-      origin: req.headers.origin,
-      credentials: true,
-      exposedHeaders: ["set-cookie"],
-     }),
-);
+// app.use(
+//   cors({
+//       origin: req.headers.origin,
+//       credentials: true,
+//       exposedHeaders: ["set-cookie"],
+//      }),
+// );
 
-// app.use(function (req, res, next) {
+app.use(function (req, res, next) {
 //      res.header("Access-Control-Allow-Credentials", "true");
 //      res.header('Access-Control-Expose-Headers', "Set-Cookie");
      
@@ -28,9 +28,13 @@ app.use(
 //      res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 // //      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With,X-HTTP-Method-Override, Content-Type, withCredentials,Set-Cookie,Access-Control-Request-Method, Access-Control-Request-Headers");
-
-//    next();
-// })
+    cors({
+          origin: req.headers.origin,
+          credentials: true,
+          exposedHeaders: ["set-cookie"],
+         }),
+   next();
+})
 
 const auth = require ('./router/auth');
 app.use(auth);
