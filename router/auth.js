@@ -78,8 +78,8 @@ router.post("/signin", async(req,res)=>{
 
             res.cookie("jwtoken", token,{
              expires: new Date(Date.now()+ 1766400000), // expire after 30 days
-             sameSite: 'none', 
-             secure: true// its to allow addition on http (by default addition of token is done on https)
+             sameSite: 'Lax', 
+            //  secure: true// its to allow addition on http (by default addition of token is done on https)
             })
         if(!isMatch)
         {  res.status(400).json({msg:"invalid password"});

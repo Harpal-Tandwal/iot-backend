@@ -11,7 +11,7 @@ const cors = require("cors")
 const PORT = process.env.PORT ||5000; // accessing  credentials from env file
 
 require('./db/conn'); // requiring database connection info
-app.enable('trust proxy');
+// app.enable('trust proxy');
 // app.use(
 //   cors({
 //     credentials: true,
@@ -21,10 +21,10 @@ app.enable('trust proxy');
 
 app.use(function (req, res, next) {
      res.header("Access-Control-Allow-Credentials", "true");
-     res.header("Access-Control-Allow-Origin", "https://hptech-v16r.onrender.com");
+     res.header("Access-Control-Allow-Origin", req.headers.origin);
      res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 //      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, withCredentials,Set-Cookie,Access-Control-Request-Method, Access-Control-Request-Headers");
+    // res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, withCredentials,Set-Cookie,Access-Control-Request-Method, Access-Control-Request-Headers");
 
    next();
 })
