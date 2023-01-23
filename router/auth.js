@@ -78,7 +78,7 @@ router.post("/signin", async(req,res)=>{
 
             res.cookie("jwtoken", token,{
              expires: new Date(Date.now()+ 1766400000), // expire after 30 days
-             httpOnly:true,
+             httpOnly:false,
              sameSite: 'none', 
              secure: true// its to allow addition on http (by default addition of token is done on https)
             })
