@@ -77,12 +77,12 @@ router.post("/signin", async(req,res)=>{
             //  storing the token in cookeis
 
             res.cookie("jwtoken", token,{
-              // domain :"https://hptech-v16r.onrender.com",
-              // path:"/",
-             expires: new Date(Date.now()+ 1766400000), // expire after 30 days
-             sameSite: 'none', 
-             secure: true// its to allow addition on http (by default addition of token is done on https)
-            })
+              domain: '.onrender.com',
+              httpOnly: true,
+              sameSite: 'none',
+              secure: true,
+              expires: new Date(Date.now()+ 1766400000), // expire after 30 days
+           })
         if(!isMatch)
         {  res.status(400).json({msg:"invalid password"});
         }else{
