@@ -6,18 +6,37 @@ var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const path = require("path");
 dotenv.config({path:'./config.env'}); // accessing dotenv file 
+const cors = require("cors")
 
 const PORT = process.env.PORT ||5000; // accessing  credentials from env file
 
 require('./db/conn'); // requiring database connection info
+app.enable('trust proxy');
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: 'https://hptech-v16r.onrender.com',
+//   }),
+// );
 
+app.use(function (req, res, next) {
+     res.header("Access-Control-Allow-Credentials", "true");
+     res.header("Access-Control-Allow-Origin", "https://hptech-v16r.onrender.com");
+     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+//      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, withCredentials,Set-Cookie,Access-Control-Request-Method, Access-Control-Request-Headers");
+
+   next();
+})
 
 const auth = require ('./router/auth');
 app.use(auth);
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
+    console.log(req.body);
+    res.send("your are using hptech iot services")
     
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  //  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     // res.sendFile("C:\Users\Dell\Desktop\project\mernProjectThapa\HpTech-iot-platform\client\public\index.html");
     
 })
