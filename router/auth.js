@@ -76,13 +76,19 @@ router.post("/signin", async(req,res)=>{
         console.log(token);
             //  storing the token in cookeis
 
-            res.cookie("jwtoken", token,{
-              domain: 'iot-backend-xvij.onrender.com',
-              httpOnly: true,
-              sameSite: 'None',
-              secure: true,
-              expires: new Date(Date.now()+ 1766400000), // expire after 30 days
-           })
+          //   res.cookie("jwtoken", token,{
+          //     domain: 'iot-backend-xvij.onrender.com',
+          //     httpOnly: true,
+          //     sameSite: 'None',
+          //     secure: true,
+          //     expires: new Date(Date.now()+ 1766400000), // expire after 30 days
+          //  })
+            // trying to send the token in response as cookie n0t work in cross origin
+            res.status(200).json({token})
+
+            
+
+
         if(!isMatch)
         {  res.status(400).json({msg:"invalid password"});
         }else{
