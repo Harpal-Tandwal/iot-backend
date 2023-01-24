@@ -191,7 +191,7 @@ router.post("/espsave", async (req,res)=>{
 
 router.get("/showprojects", async(req,res)=>{
 
-  const token = req.cookies.jwtoken;
+  const token = req.body.token;
         const  verifyToken = jwt.verify(token,process.env.SECRET_KEY);
         const rootUser = await User.findOne ({_id:verifyToken._id,"tokens:token":token})
         const {email}=rootUser
