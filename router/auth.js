@@ -189,7 +189,7 @@ router.post("/espsave", async (req,res)=>{
 })
 //******************************** */
 
-router.get("/showprojects", async(req,res)=>{
+router.post("/showprojects", async(req,res)=>{
 
   const token = req.body.token;
         const  verifyToken = jwt.verify(token,process.env.SECRET_KEY);
