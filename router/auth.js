@@ -77,9 +77,9 @@ router.post("/signin", async(req,res)=>{
             //  storing the token in cookeis
 
             res.cookie("jwtoken", token,{
-              domain: '.onrender.com',
+              domain: 'hptech-v16r.onrender.com',
               httpOnly: true,
-              sameSite: 'none',
+              sameSite: 'None',
               secure: true,
               expires: new Date(Date.now()+ 1766400000), // expire after 30 days
            })
