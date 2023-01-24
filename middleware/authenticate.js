@@ -5,8 +5,10 @@ const SECRET_KEY="HEYTHISISASECRETKEYFORJWTTOKEN123456788HJHKJNBJHBJB9"
 
 const Authenticate = async (req, res,next)=>{
     try{
+        console.log("request ******* =>",req.body)
         // console.log("cookie =",req.cookies)
-        const token = req.cookies.jwtoken;
+        const token = req.body.token;
+        console.log("token from authentication :" ,token)
         const  verifyToken = jwt.verify(token,SECRET_KEY);
         const rootUser = await User.findOne ({_id:verifyToken._id,"tokens:token":token})
    if(!rootUser)

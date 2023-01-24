@@ -73,7 +73,7 @@ router.post("/signin", async(req,res)=>{
 
         const isMatch = await bcrypt.compare(password,userLogin.password);
         const token = await userLogin.generateAuthToken();
-        console.log(token);
+        console.log( "token is :",token);
             //  storing the token in cookeis
 
           //   res.cookie("jwtoken", token,{
@@ -84,15 +84,15 @@ router.post("/signin", async(req,res)=>{
           //     expires: new Date(Date.now()+ 1766400000), // expire after 30 days
           //  })
             // trying to send the token in response as cookie n0t work in cross origin
-            res.status(200).json({token})
+            // res.status(200).json({msg:" attempt to send token ",token:token});
 
-            
+
 
 
         if(!isMatch)
         {  res.status(400).json({msg:"invalid password"});
         }else{
-            res.status(200).json({msg:"your are logged in"});
+            res.status(200).json({msg:"your are logged in",token:token});
         }
       }
      catch(err){
@@ -101,7 +101,7 @@ router.post("/signin", async(req,res)=>{
     }
 })
 
-router.get("/aboutme",authenticate,(req,res)=>{
+router.post("/aboutme",authenticate,(req,res)=>{
   console.log("hii from about")
   res.send(req.rootUser);
 
