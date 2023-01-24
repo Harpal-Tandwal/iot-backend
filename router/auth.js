@@ -77,7 +77,7 @@ router.post("/signin", async(req,res)=>{
             //  storing the token in cookeis
 
             res.cookie("jwtoken", token,{
-              domain: 'hptech-v16r.onrender.com',
+              domain: 'iot-backend-xvij.onrender.com',
               httpOnly: true,
               sameSite: 'None',
               secure: true,
