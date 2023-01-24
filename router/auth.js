@@ -102,7 +102,7 @@ router.post("/signin", async(req,res)=>{
 })
 
 router.post("/aboutme",authenticate,(req,res)=>{
-  console.log("hii from about")
+  console.log("hii from aboutme")
   res.send(req.rootUser);
 
 
